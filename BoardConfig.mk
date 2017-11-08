@@ -16,8 +16,33 @@
 
 TARGET_BOOTLOADER_BOARD_NAME := taimen
 DEFAULT_LOW_PERSISTENCE_MODE_BRIGHTNESS := 0x0000008c
+TARGET_BOARD_PLATFORM := msm8998
 
-BOARD_KERNEL_CMDLINE += console=ttyMSM0,115200,n8 earlycon=msm_serial_dm,0xc1b0000
+TARGET_ARCH := arm64
+TARGET_ARCH_VARIANT := armv8-a
+TARGET_CPU_ABI := arm64-v8a
+TARGET_CPU_ABI2 :=
+TARGET_CPU_VARIANT := cortex-a73
+
+TARGET_2ND_ARCH := arm
+TARGET_2ND_ARCH_VARIANT := armv7-a-neon
+TARGET_2ND_CPU_ABI := armeabi-v7a
+TARGET_2ND_CPU_ABI2 := armeabi
+TARGET_2ND_CPU_VARIANT := cortex-a73
+
+BOARD_KERNEL_CMDLINE += androidboot.hardware=$(TARGET_BOOTLOADER_BOARD_NAME)
+BOARD_KERNEL_CMDLINE += androidboot.console=ttyMSM0,115200,n8 lpm_levels.sleep_disabled=1
+BOARD_KERNEL_CMDLINE += earlycon=msm_serial_dm,0xc1b0000 enforcing=0 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3
+BOARD_KERNEL_CMDLINE += service_locator.enable=1 swiotlb=2048 firmware_class.path=/vendor/firmware BOARD_KERNEL_CMDLINE += loop.max_part=7 raid=noautodetect
+
+
+TARGET_KERNEL_CLANG_COMPILE := true
+KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-android-
+TARGET_KERNEL_SOURCE := kernel/google/taimen
+TARGET_KERNEL_CONFIG := custom_defconfig
+TARGET_KERNEL_ARCH := arm64
+BOARD_KERNEL_IMAGE_NAME := Image.lz4-dtb
 
 include device/google/wahoo/BoardConfig.mk
 
@@ -26,30 +51,6 @@ BOARD_AVB_ENABLE := true
 
 # sepolicy
 BOARD_SEPOLICY_DIRS += device/google/taimen/sepolicy
-
-ifeq (,$(filter-out taimen_gcc, $(TARGET_PRODUCT)))
-# if TARGET_PRODUCT == taimen_gcc
-BOARD_VENDOR_KERNEL_MODULES += \
-    device/google/wahoo-kernel/gcc/touch_core_base.ko \
-    device/google/wahoo-kernel/gcc/ftm4.ko \
-    device/google/wahoo-kernel/gcc/sw49408.ko \
-    device/google/wahoo-kernel/gcc/lge_battery.ko
-else ifeq (,$(filter-out taimen_kasan, $(TARGET_PRODUCT)))
-# if TARGET_PRODUCT == taimen_kasan
-BOARD_VENDOR_KERNEL_MODULES += \
-    device/google/wahoo-kernel/kasan/touch_core_base.ko \
-    device/google/wahoo-kernel/kasan/ftm4.ko \
-    device/google/wahoo-kernel/kasan/sw49408.ko \
-    device/google/wahoo-kernel/kasan/lge_battery.ko
-else
-BOARD_VENDOR_KERNEL_MODULES += \
-    device/google/wahoo-kernel/touch_core_base.ko \
-    device/google/wahoo-kernel/ftm4.ko \
-    device/google/wahoo-kernel/sw49408.ko \
-    device/google/wahoo-kernel/lge_battery.ko
-endif
-
--include vendor/google_devices/taimen/proprietary/BoardConfigVendor.mk
 
 # Testing related defines
 BOARD_PERFSETUP_SCRIPT := platform_testing/scripts/perf-setup/wahoo-setup.sh
