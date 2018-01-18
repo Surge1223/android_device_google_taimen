@@ -17,7 +17,7 @@
 TARGET_BOOTLOADER_BOARD_NAME := taimen
 DEFAULT_LOW_PERSISTENCE_MODE_BRIGHTNESS := 0x0000008c
 
-include device/google/wahoo/BoardConfig.mk
+-include device/google/wahoo/BoardConfig.mk
 
 BOARD_BOOTIMAGE_PARTITION_SIZE := 41943040
 TARGET_BOARD_PLATFORM := msm8998
@@ -84,10 +84,8 @@ WITHOUT_CHECK_API := true
 # dependencies on the framework.
 ANDROID_NO_TEST_CHECK := true
 
-# Install odex files into the other system image
-BOARD_USES_SYSTEM_OTHER_ODEX := false
 
-BOARD_ROOT_EXTRA_FOLDERS := persist firmware metadata
+BOARD_ROOT_EXTRA_FOLDERS := persist firmware metadata var
 TARGET_ANDROID_FILESYSTEM_CONFIG_H := device/google/wahoo/android_filesystem_config.h
 
 QCOM_BOARD_PLATFORMS += msm8998
@@ -205,6 +203,7 @@ BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 AVB_VBMETA_IMAGE_FLAGS_HASHTREE_DISABLED := true
 AVB_VBMETA_IMAGE_FLAGS_VERIFICATION_DISABLED := true
 BOARD_BUILD_DISABLED_VBMETAIMAGE := true
+
 # Partitions (listed in the file) to be wiped under recovery.
 TARGET_RECOVERY_WIPE := device/google/wahoo/recovery.wipe
 TARGET_RECOVERY_FSTAB := device/google/wahoo/fstab.hardware
