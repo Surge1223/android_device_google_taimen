@@ -142,3 +142,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.texture_cache_size=84 \
     ro.hwui.layer_cache_size=64 \
     ro.hwui.path_cache_size=32
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 2880
+TARGET_SCREEN_WIDTH := 1440
+
+# ModemService
+PRODUCT_COPY_FILES += \
+  device/google/taimen/whitelist_modemservice.xml:system/etc/sysconfig/whitelist_modemservice.xml
+
+include device/google/wahoo/device.mk
