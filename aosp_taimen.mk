@@ -15,7 +15,6 @@
 #
 
 # Get the full APNs
-PRODUCT_COPY_FILES := device/google/wahoo/apns-full-conf.xml:system/etc/apns-conf.xml
 
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
@@ -28,12 +27,13 @@ $(call inherit-product-if-exists, vendor/google/taimen/taimen-vendor.mk)
 PRODUCT_PACKAGES += \
     Dialer \
     Launcher3 \
-    WallpaperPicker
+    WallpaperPicker \
+    netutils-wrapper-1.0 \
+    vndk_package
 
 PRODUCT_COPY_FILES += \
     device/google/taimen/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects_vendor.xml
 
-PRODUCT_RESTRICT_VENDOR_FILES := owner
 
 PRODUCT_MANUFACTURER := Google
 PRODUCT_BRAND := Android
