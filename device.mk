@@ -43,7 +43,7 @@ PRODUCT_PACKAGES += \
 
 # Default priv-app permissions
 PRODUCT_COPY_FILES += \
-    device/google/taimen/privapp-permissions-taimen.xml:$(TARGET_OUT_ETC)/permissions/privapp-permissions-taimen.xml
+    device/google/taimen/privapp-permissions-taimen.xml:system/etc/permissions/privapp-permissions-taimen.xml
 
 # Audio
 PRODUCT_COPY_FILES += \
