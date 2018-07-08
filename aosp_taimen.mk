@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+# Get the full APNs
+
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
@@ -32,7 +34,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/google/taimen/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects_vendor.xml
 
-PRODUCT_RESTRICT_VENDOR_FILES := owner
 
 PRODUCT_MANUFACTURER := Google
 PRODUCT_BRAND := Android
