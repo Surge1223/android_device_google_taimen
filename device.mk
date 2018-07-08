@@ -34,9 +34,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # IMS
 PRODUCT_PACKAGES += \
+    netutils-wrapper-1.0 \
+    com.android.ims.rcsmanager.xml \
     com.android.ims.rcsmanager \
     RcsService \
-    PresencePolling
+    PresencePolling \
+    libion
 
 # Default priv-app permissions
 PRODUCT_COPY_FILES += \
