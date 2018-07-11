@@ -17,8 +17,6 @@
 TARGET_BOOTLOADER_BOARD_NAME := taimen
 DEFAULT_LOW_PERSISTENCE_MODE_BRIGHTNESS := 0x0000008c
 
-include device/google/wahoo/BoardConfig.mk
-
 BOARD_BOOTIMAGE_PARTITION_SIZE := 41943040
 TARGET_BOARD_PLATFORM := msm8998
 
@@ -184,11 +182,11 @@ TARGET_USES_MKE2FS := true
 BOARD_VNDK_VERSION := current
 
 # sepolicy
+BOARD_SEPOLICY_DIRS += device/google/taimen/sepolicy
 BOARD_SEPOLICY_DIRS += device/google/wahoo/sepolicy/vendor
 BOARD_PLAT_PUBLIC_SEPOLICY_DIR := device/google/wahoo/sepolicy/public
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR := device/google/wahoo/sepolicy/private
 BOARD_SEPOLICY_DIRS += device/google/wahoo/sepolicy/verizon
-BOARD_SEPOLICY_DIRS += device/google/taimen/sepolicy
 
 # Testing related defines
 BOARD_PERFSETUP_SCRIPT := platform_testing/scripts/perf-setup/wahoo-setup.sh
@@ -220,7 +218,8 @@ BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 
 AVB_VBMETA_IMAGE_FLAGS_HASHTREE_DISABLED := true
 AVB_VBMETA_IMAGE_FLAGS_VERIFICATION_DISABLED := true
-BOARD_BUILD_DISABLED_VBMETAIMAGE := true
 # Partitions (listed in the file) to be wiped under recovery.
 TARGET_RECOVERY_WIPE := device/google/wahoo/recovery.wipe
 TARGET_RECOVERY_FSTAB := device/google/wahoo/fstab.hardware
+
+-include device/google/wahoo/BoardConfig.mk
