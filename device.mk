@@ -41,16 +41,12 @@ PRODUCT_PACKAGES += \
     PresencePolling \
     libion
 
-# Default priv-app permissions
-PRODUCT_COPY_FILES += \
-    device/google/taimen/privapp-permissions-taimen.xml:system/etc/permissions/privapp-permissions-taimen.xml
-
 # Audio
 PRODUCT_COPY_FILES += \
     device/google/taimen/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
     device/google/taimen/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml
 
-include device/google/wahoo/device.mk
+-include device/google/wahoo/device.mk
 
 PRODUCT_COPY_FILES += \
     device/google/taimen/init-taimen.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init-$(PRODUCT_HARDWARE).rc \
