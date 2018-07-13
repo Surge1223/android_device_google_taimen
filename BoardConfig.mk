@@ -221,5 +221,3 @@ AVB_VBMETA_IMAGE_FLAGS_VERIFICATION_DISABLED := true
 # Partitions (listed in the file) to be wiped under recovery.
 TARGET_RECOVERY_WIPE := device/google/wahoo/recovery.wipe
 TARGET_RECOVERY_FSTAB := device/google/wahoo/fstab.hardware
-
--include device/google/wahoo/BoardConfig.mk

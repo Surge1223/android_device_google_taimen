@@ -29,11 +29,13 @@ PRODUCT_PACKAGES += \
     Launcher3QuickStep \
     WallpaperPicker \
     netutils-wrapper-1.0 \
-    vndk_package
+    vndk_package \
+    WallpaperPicker
 
 PRODUCT_COPY_FILES += \
     device/google/taimen/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects_vendor.xml
 
+PRODUCT_FULL_TREBLE := true
 
 PRODUCT_MANUFACTURER := Google
 PRODUCT_BRAND := Android
