@@ -28,6 +28,8 @@ $(warning Overlays defined in '$(DEVICE_PACKAGE_OVERLAYS)' will override '$(PROD
 endif
 DEVICE_PACKAGE_OVERLAYS += device/google/taimen/overlay
 
+include device/google/wahoo/device.mk
+
 # Tethering
 PRODUCT_PROPERTY_OVERRIDES += \
     net.tethering.noprovisioning=true
@@ -35,7 +37,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # IMS
 PRODUCT_PACKAGES += \
     netutils-wrapper-1.0 \
-    com.android.ims.rcsmanager.xml \
+    messaging \
     com.android.ims.rcsmanager \
     RcsService \
     PresencePolling \
@@ -45,8 +47,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/google/taimen/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
     device/google/taimen/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml
-
--include device/google/wahoo/device.mk
 
 PRODUCT_COPY_FILES += \
     device/google/taimen/init-taimen.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init-$(PRODUCT_HARDWARE).rc \
@@ -146,5 +146,3 @@ TARGET_SCREEN_WIDTH := 1440
 # ModemService
 PRODUCT_COPY_FILES += \
   device/google/taimen/whitelist_modemservice.xml:system/etc/sysconfig/whitelist_modemservice.xml
-
-include device/google/wahoo/device.mk
