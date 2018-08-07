@@ -35,8 +35,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/google/taimen/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects_vendor.xml
 
-PRODUCT_FULL_TREBLE := true
-
+PRODUCT_FULL_TREBLE := false
 PRODUCT_MANUFACTURER := Google
 PRODUCT_BRAND := Android
 PRODUCT_NAME := aosp_taimen
